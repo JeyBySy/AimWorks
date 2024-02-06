@@ -49,9 +49,10 @@ body {
   margin-top: -100vh;
 }
 
-.screen-highscore {
+#screenHighscore {
   position: absolute;
   top: 0;
+  visibility: hidden;
 }
 .game-container {
   position: relative;

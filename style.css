@@ -6,7 +6,8 @@
   margin: 1rem;
 }
 :root {
-  --base-color: #63ede8;
+  --target-color: #63ede8;
+  --target-shadow: #2ce9e3b0;
 }
 body {
   background: rgb(23, 23, 23);
@@ -18,14 +19,19 @@ body {
   text-align: center;
   /* cursor: crosshair; */
 }
+h1,
+h2 {
+  text-shadow: 1px 2px 5px var(--target-shadow);
+  margin-bottom: 3rem;
+}
 .screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
-  transition: margin 0.5s ease-out;
+  width: 100%;
+  transition: 0.5s ease-out;
 }
 
 .btn {
@@ -36,24 +42,119 @@ body {
   font-family: inherit;
   cursor: pointer;
   border-radius: 10px;
+  transition: ease 0.3s;
 }
 
 .btn:hover {
   opacity: 0.8;
+  transform: scale(1.1);
+  box-shadow: 1px 2px 5px var(--target-shadow);
 }
 
 .btn:focus {
   outline: 0;
 }
+
 .screen.up {
   margin-top: -100vh;
 }
 
 #screenHighscore {
   position: absolute;
+  text-shadow: 1px 2px 5px var(--target-shadow);
   top: 0;
   visibility: hidden;
+  font-size: 20px;
+
+  & h4 {
+    display: flex;
+  }
+  & #score {
+    margin-top: 0px;
+    font-size: 20px;
+  }
 }
-.game-container {
+
+#game-container {
+  /* position: relative;
+  width: 100%;
+  z-index: 2;
+  background-color: green;
+  height: 800px;
+  width: 100%;
+  height: 85vh;
+  margin: 5rem auto !important; */
+
   position: relative;
+  top: 0;
+  left: 0;
+  width: 95vw; /* Set width to 100vw to fill the entire viewport width */
+  height: 85vh; /* Set height to 100vh to fill the entire viewport height */
+  z-index: 2;
+  border: 1px solid rgb(110, 110, 110);
+  margin: 5rem auto;
+}
+.tag {
+  z-index: 1;
+  font-family: "Courier New", Courier, monospace;
+  position: fixed;
+  background-color: rgb(122, 122, 122);
+  right: -6rem;
+  top: 0rem;
+  height: 60px;
+  text-align: center;
+  padding: 0 5rem 0 5rem;
+  transform: rotate(45deg);
+  & img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  & img:hover {
+    transform: scale(1.2);
+  }
+}
+.mobile {
+  display: none;
+  width: 85%;
+  margin: auto;
+  color: rgb(236, 86, 86);
+}
+.bounce {
+  animation: bounceInDown 0.8s;
+  animation-iteration-count: infinite;
+}
+.target {
+  user-select: none; /* Disable selection */
+  width: 80px;
+  height: 80px;
+  background-color: var(--target-color);
+  border-radius: 50%; /* Use border-radius 50% to make a perfect circle */
+  display: inline-block;
+  box-shadow: 0 0 20px var(--target-shadow);
+  border: 1px solid rgb(41, 129, 41);
+}
+
+@media only screen and (max-width: 600px) {
+  .screen {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+}
+
+@keyframes bounceInDown {
+  0%,
+  80%,
+  100% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  60% {
+    transform: translateY(0px);
+  }
 }

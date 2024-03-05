@@ -17,7 +17,6 @@ body {
   overflow: hidden;
   margin: 0;
   text-align: center;
-  /* cursor: crosshair; */
 }
 h1,
 h2 {
@@ -65,7 +64,6 @@ h2 {
   top: 0;
   visibility: hidden;
   font-size: 20px;
-
   & h4 {
     display: flex;
   }
@@ -73,18 +71,72 @@ h2 {
     margin-top: 0px;
     font-size: 20px;
   }
+  & #timer {
+    margin-top: 0px;
+    font-size: 20px;
+  }
+}
+.highlight {
+  color: var(--target-color);
+}
+.showScreen {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.hideScreen {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.popScreen {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.541);
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  margin: 0;
+  text-align: start;
+  & .popScreen-content {
+    min-width: 590px;
+    padding: 0.5rem;
+    min-height: 200px;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(23, 23, 23);
+    position: absolute;
+    border: 1px solid var(--target-shadow);
+    box-shadow: 1px 2px 5px var(--target-shadow);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 10px;
+    & .popScreen-content-title {
+      font-size: 25px;
+    }
+    & .popScreen-content-body {
+      font-size: 14px;
+      & ol li {
+        list-style-position: inside;
+      }
+    }
+  }
+  & .popScreen-close {
+    position: inherit;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  & .popScreen-close:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+  }
 }
 
 #game-container {
-  /* position: relative;
-  width: 100%;
-  z-index: 2;
-  background-color: green;
-  height: 800px;
-  width: 100%;
-  height: 85vh;
-  margin: 5rem auto !important; */
-
   position: relative;
   top: 0;
   left: 0;

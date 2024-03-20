@@ -1,60 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AimWorks</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AimWorks</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="tag">
-        <a href="https://github.com/JeyBySy" target="_blank">
-            <img src="github.svg" alt="Github">
+  <div class="tag">
+    <a href="https://github.com/JeyBySy" target="_blank">
+      <img src="github.svg" alt="Github">
+    </a>
+  </div>
+
+  <div class="screen">
+    <h1 class="bounce">AimWorks</h1>
+    <button class="btn" id="HowTo">How to play?</button>
+    <button class="btn" id="highscore">My Highscore</button>
+    <button class="btn" id="start-btn">Play Game</button>
+  </div>
+  <div class="screen">
+    <h2 class="bounce">Choose Category</h2>
+    <button class="btn choose-cat" id="cat-twenty" data-value="20">20 seconds</button>
+    <button class="btn choose-cat" id="cat-ten" data-value="2">10 seconds</button>
+    <button class="btn" id="back_home">Back</button>
+  </div>
+
+  <!-- Game screen -->
+  <div class="screen" id="game-container"></div>
+
+  <!-- Overlays -->
+  <div id="screenHighscore">
+    <h4>TIME:<p id="timer">00:00</p>
+    </h4>
+    <h4>Score:<p id="score">0</p>
+    </h4>
+  </div>
+
+  <!-- Small screen display -->
+  <div class="screen mobile bounce">
+    Play on larger screen
+  </div>
+
+  <!-- Pop screen -->
+  <div class="popScreen hideScreen" id="HowTo_screen" data-content="HowTo">
+    <div class="popScreen-content">
+      <div class="popScreen-close" id="close_screen">X</div>
+      <div class="popScreen-content-title bounce">
+        <center>How to play</center>
+      </div>
+      <div class="popScreen-content-body">
+        <ol>
+          <li>Click <i class="highlight">"Play Game"</i> button to start</li>
+          <li>Choose <i class="highlight">"20 Seconds"</i>or<i class="highlight">"10 seconds"</i> category
+          </li>
+          <li>Tap/click the target to start the timer</li>
+          <li>Enjoy the game :)</li>
+
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="popScreen hideScreen" id="result_screen" data-content="result_screen">
+    <div class="popScreen-content">
+      <div class="popScreen-content-title bounce">
+        <center> Result</center>
+      </div>
+      <div class="popScreen-content-body">
+        <span id="popScreen_cat"></span>
+        <br>
+        <span id="popScreen_score"></span>
+        <hr>
+        <a href="/" style="padding: 0; margin: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,256,256" style="fill:#FFFFFF;">
+            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(3.55556,3.55556)">
+                <path d="M36,10c-1.139,0 -2.27708,0.38661 -3.20508,1.16211l-21.27734,17.7793c-1.465,1.224 -1.96564,3.32881 -1.05664,5.00781c1.251,2.309 4.20051,2.79122 6.10352,1.19922l18.79492,-15.70313c0.371,-0.31 0.91025,-0.31 1.28125,0l18.79492,15.70313c0.748,0.626 1.6575,0.92969 2.5625,0.92969c1.173,0 2.33591,-0.51091 3.12891,-1.50391c1.377,-1.724 0.98597,-4.27055 -0.70703,-5.68555l-2.41992,-2.02148v-10.19922c0,-1.473 -1.19402,-2.66797 -2.66602,-2.66797h-2.66602c-1.473,0 -2.66797,1.19497 -2.66797,2.66797v3.51367l-10.79492,-9.01953c-0.928,-0.7755 -2.06608,-1.16211 -3.20508,-1.16211zM35.99609,22.92578l-22,18.37695v8.69727c0,4.418 3.582,8 8,8h28c4.418,0 8,-3.582 8,-8v-8.69727zM32,38h8c1.105,0 2,0.895 2,2v10h-12v-10c0,-1.105 0.895,-2 2,-2z"></path>
+              </g>
+            </g>
+          </svg>
+
         </a>
+      </div>
     </div>
-    
-    <div class="screen">
-        <h1 class="bounce">AimWorks</h1>
-        <button class="btn" id="HowTo">How to play?</button>
-        <button class="btn" id="start-btn">Play Game</button>
-    </div>
-    <div class="screen">
-        <h2 class="bounce">Choose Category</h2>
-        <button class="btn choose-cat" id="cat-twenty" data-value="20">20 seconds</button>
-        <button class="btn choose-cat" id="cat-fifteen" data-value="10">10 seconds</button>
-    </div>
-    <!-- Game screen -->
-    <div class="screen" id="game-container"></div>
+  </div>
 
-    <!-- Overlays -->
-    <div id="screenHighscore">
-        <h4>TIME:<p id="timer">00:00</p></h4> 
-        <h4>Score:<p id="score">0</p></h4> 
-    </div>
+  <div class="popScreen hideScreen" id="highscore_screen" data-content="highscore_screen">
+    <div class="popScreen-content">
+      <div class="popScreen-close" id="close_screen">X</div>
+      <div class="popScreen-content-title bounce">
+        <center>My highscores</center>
+      </div>
+      <div class="popScreen-content-body flex">
+        <div id="cat_twenty">
 
-    <!-- Small screen display -->
-    <div class="screen mobile bounce">
-        Play on larger screen
-    </div>
-    
-    <!-- Pop screen -->
-    <div class="popScreen hideScreen" id="HowTo_Screen" data-content="HowTo">
-        <div class="popScreen-content">
-            <div class="popScreen-close" id="close_screen">X</div>
-          <div class="popScreen-content-title bounce">
-           <center> How to play</center>
-          </div>
-          <div class="popScreen-content-body">
-           <ol>
-            <li>Click <i class="highlight">"Play Game"</i> button to start</li>
-            <li>Choose <i class="highlight">"20 Seconds"</i>or<i class="highlight">"10 seconds"</i> category</li>
-            <li>Tap/click the target to start the timer</li>
-            <li>Enjoy the game :)</li>
-           
-           </ol>
-          </div>
         </div>
+        <div id="cat_ten">
+
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

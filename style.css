@@ -23,6 +23,25 @@ h2 {
   text-shadow: 1px 2px 5px var(--target-shadow);
   margin-bottom: 3rem;
 }
+
+#cat_ten > div:nth-child(3) .title,
+#cat_twenty > div:nth-child(3) .title {
+  color: gold;
+  text-shadow: 1px 2px 5px var(--target-shadow);
+}
+
+#cat_ten > div:nth-child(4) .title,
+#cat_twenty > div:nth-child(4) .title {
+  color: silver;
+  text-shadow: 1px 2px 5px var(--target-shadow);
+}
+
+#cat_ten > div:nth-child(5) .title,
+#cat_twenty > div:nth-child(4) .title {
+  color: brown;
+  text-shadow: 1px 2px 5px #2d2d2d;
+}
+
 .screen {
   display: flex;
   flex-direction: column;
@@ -42,6 +61,7 @@ h2 {
   cursor: pointer;
   border-radius: 10px;
   transition: ease 0.3s;
+  min-width: 200px;
 }
 
 .btn:hover {
@@ -56,6 +76,9 @@ h2 {
 
 .screen.up {
   margin-top: -100vh;
+}
+.screen.down {
+  margin-top: 100vh;
 }
 
 #screenHighscore {
@@ -92,7 +115,7 @@ h2 {
 .popScreen {
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.541);
+  background: rgba(0, 0, 0, 0.452);
   position: fixed;
   z-index: 0;
   inset: 0;
@@ -186,6 +209,13 @@ h2 {
   display: inline-block;
   box-shadow: 0 0 20px var(--target-shadow);
   border: 1px solid rgb(41, 129, 41);
+}
+.flex {
+  display: flex;
+}
+#cat_twenty,
+#cat_ten {
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {

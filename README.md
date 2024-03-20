@@ -5,7 +5,7 @@
 ### <li>Enjoy the game :)</li>
 
 # Screens
-<img src="./screens/image.png" alr='Home'>
+<img src="./screens/home.png" alr='Home'>
 <img src="./screens/howto.png" alr='Home'>
 <img src="./screens/scores.png" alr='Home'>
 <img src="./screens/cat.png" alr='Home'>
